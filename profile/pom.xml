@@ -24,7 +24,7 @@
     <parent>
         <groupId>org.apache.karaf</groupId>
         <artifactId>karaf</artifactId>
-        <version>4.0.8-SNAPSHOT</version>
+        <version>4.0.9-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
@@ -188,6 +188,7 @@
                             org.apache.karaf.profile.assembly,
                             org.apache.karaf.profile.impl,
                             org.apache.karaf.profile.impl.osgi,
+                            org.apache.karaf.profile.versioning,
                             org.apache.karaf.util.config,
                             org.apache.karaf.util.maven,
                             org.apache.felix.utils.manifest,

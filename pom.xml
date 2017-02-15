@@ -31,7 +31,7 @@
     <groupId>org.apache.karaf</groupId>
     <artifactId>karaf</artifactId>
     <packaging>pom</packaging>
-    <version>4.0.8-SNAPSHOT</version>
+    <version>4.0.9-SNAPSHOT</version>
     <name>Apache Karaf</name>
     <inceptionYear>2007</inceptionYear>
 
@@ -144,12 +144,10 @@
         <asm.springsource.version>1.5.3</asm.springsource.version>
         <cglib.bundle.version>3.2.4_1</cglib.bundle.version>
         <cglib2.version>2.2.0</cglib2.version>
-        
-        <jna.version>4.2.2</jna.version>
-        
+
         <commons-beanutils.version>1.9.2</commons-beanutils.version>
         <commons-codec.version>1.10</commons-codec.version>
-        <commons-compress.version>1.11</commons-compress.version>
+        <commons-compress.version>1.12</commons-compress.version>
         <commons-collections.version>3.2.2</commons-collections.version>
         <commons-dbcp.version>1.4_3</commons-dbcp.version>
         <commons-fileupload.version>1.3.1</commons-fileupload.version>
@@ -161,7 +159,7 @@
         <dom4j.bundle.version>1.6.1_5</dom4j.bundle.version>
         <eclipselink.version>2.6.4</eclipselink.version>
         <jasypt.bundle.version>1.9.2_1</jasypt.bundle.version>
-        <jolokia.version>1.3.3</jolokia.version>
+        <jolokia.version>1.3.5</jolokia.version>
         <serp.bundle.version>1.14.1_1</serp.bundle.version>
         <servlet.spec.groupId>javax.servlet</servlet.spec.groupId>
 	    <servlet.spec.artifactId>javax.servlet-api</servlet.spec.artifactId>
@@ -180,27 +178,27 @@
         <equinox.coordinator.version>1.1.0.v20120522-1841</equinox.coordinator.version>
 
         <felix.bundlerepository.version>2.0.8</felix.bundlerepository.version>
-        <felix.configadmin.version>1.8.8</felix.configadmin.version>
+        <felix.configadmin.version>1.8.12</felix.configadmin.version>
         <felix.connect.version>0.1.0</felix.connect.version>
         <felix.coordinator.version>1.0.2</felix.coordinator.version>
         <felix.fileinstall.version>3.5.6</felix.fileinstall.version>
-        <felix.framework.version>5.6.0</felix.framework.version>
-        <felix.framework.security.version>2.4.0</felix.framework.security.version>
+        <felix.framework.version>5.6.1</felix.framework.version>
+        <felix.framework.security.version>2.6.0</felix.framework.security.version>
         <felix.gogo.version>0.16.2</felix.gogo.version>
         <felix.inventory.version>1.0.4</felix.inventory.version>
-        <felix.plugin.version>3.0.1</felix.plugin.version>
-        <felix.utils.version>1.8.2</felix.utils.version>
-        <felix.webconsole.version>4.2.14</felix.webconsole.version>
+        <felix.plugin.version>3.2.0</felix.plugin.version>
+        <felix.utils.version>1.8.4</felix.utils.version>
+        <felix.webconsole.version>4.2.16</felix.webconsole.version>
         <felix.webconsole.api.version>3.1.2</felix.webconsole.api.version>
         <felix.metatype.version>1.1.2</felix.metatype.version>
-        <felix.eventadmin.version>1.4.6</felix.eventadmin.version>
+        <felix.eventadmin.version>1.4.8</felix.eventadmin.version>
         <felix.eventadmin.webconsole.plugin.version>1.1.4</felix.eventadmin.webconsole.plugin.version>
         <felix.obr.version>1.0.2</felix.obr.version>
-        <felix.scr.version>2.0.6</felix.scr.version>
+        <felix.scr.version>2.0.8</felix.scr.version>
         <felix.scr.compat.version>1.0.4</felix.scr.compat.version>
-        <felix.scr.webconsole.plugin.version>2.0.2</felix.scr.webconsole.plugin.version>
-        <felix.scr.annotation.version>1.11.0</felix.scr.annotation.version>
-        <felix.resolver.version>1.10.0</felix.resolver.version>
+        <felix.scr.webconsole.plugin.version>2.0.4</felix.scr.webconsole.plugin.version>
+        <felix.scr.annotation.version>1.12.0</felix.scr.annotation.version>
+        <felix.resolver.version>1.10.1</felix.resolver.version>
 
         <aries.application.version>1.0.0</aries.application.version>
         <aries.application.api.version>1.0.0</aries.application.api.version>
@@ -208,17 +206,17 @@
         <aries.blueprint.annotation.version>1.0.1</aries.blueprint.annotation.version>
         <aries.blueprint.annotation.api.version>1.0.1</aries.blueprint.annotation.api.version>
         <aries.blueprint.api.version>1.0.1</aries.blueprint.api.version>
-        <aries.blueprint.core.version>1.7.0</aries.blueprint.core.version>
+        <aries.blueprint.core.version>1.7.1</aries.blueprint.core.version>
         <aries.blueprint.core.compatibility.version>1.0.0</aries.blueprint.core.compatibility.version>
         <aries.blueprint.cm.version>1.0.9</aries.blueprint.cm.version>
         <aries.blueprint.jexl.evaluator.version>1.0.0</aries.blueprint.jexl.evaluator.version>
         <aries.blueprint.web.version>1.0.1</aries.blueprint.web.version>
         <aries.jmx.api.version>1.1.5</aries.jmx.api.version>
-        <aries.jmx.core.version>1.1.6</aries.jmx.core.version>
+        <aries.jmx.core.version>1.1.7</aries.jmx.core.version>
         <aries.jmx.blueprint.api.version>1.1.5</aries.jmx.blueprint.api.version>
         <aries.jmx.blueprint.core.version>1.1.5</aries.jmx.blueprint.core.version>
         <aries.jmx.whiteboard.version>1.1.5</aries.jmx.whiteboard.version>
-        <aries.jpa.version>2.3.0</aries.jpa.version>
+        <aries.jpa.version>2.5.0</aries.jpa.version>
         <aries.jpa.blueprint.aries.version>1.0.4</aries.jpa.blueprint.aries.version>
         <aries.jpa.api.version>1.0.2</aries.jpa.api.version>
         <aries.jpa.container.version>1.0.4</aries.jpa.container.version>
@@ -234,7 +232,6 @@
         <aries.transaction.manager.version>1.3.1</aries.transaction.manager.version>
         <aries.transaction.blueprint.version>1.1.1</aries.transaction.blueprint.version>
         <aries.transaction.blueprint.version2>2.1.0</aries.transaction.blueprint.version2>
-        <aries.transaction.jdbc.version>2.1.2</aries.transaction.jdbc.version>
         <aries.util.version>1.1.1</aries.util.version>
 
         <gemini.blueprint.version>1.0.2.RELEASE</gemini.blueprint.version>
@@ -247,7 +244,7 @@
         <hibernate.validator.version>5.0.3.Final</hibernate.validator.version>
         <jansi.version>1.14</jansi.version>
         <javassist.version>3.9.0.GA</javassist.version>
-        <jline.version>2.14.2</jline.version>
+        <jline.version>2.14.1</jline.version>
         <jledit.version>0.2.1</jledit.version>
         <jsw.version>3.2.3</jsw.version>
         <log4j.version>1.2.17</log4j.version>
@@ -262,10 +259,10 @@
         <pax.exam.version>4.9.1</pax.exam.version>
         <pax.logging.version>1.8.5</pax.logging.version>
         <pax.base.version>1.5.0</pax.base.version>
-        <pax.url.version>2.4.7</pax.url.version>
+        <pax.url.version>2.5.2</pax.url.version>
         <pax.web.version>4.3.0</pax.web.version>
         <pax.tinybundle.version>2.1.1</pax.tinybundle.version>
-        <pax.jdbc.version>0.9.0</pax.jdbc.version>
+        <pax.jdbc.version>1.0.0</pax.jdbc.version>
 
         <portlet-api.version>2.0</portlet-api.version>
         <slf4j.version>1.7.12</slf4j.version>
@@ -273,10 +270,11 @@
 
         <spring.osgi.version>1.2.1</spring.osgi.version>
         <spring31.version>3.1.4.RELEASE</spring31.version>
-        <spring32.version>3.2.17.RELEASE_1</spring32.version>
+        <spring32.version>3.2.18.RELEASE_1</spring32.version>
         <spring40.version>4.0.7.RELEASE_3</spring40.version>
-        <spring41.version>4.1.7.RELEASE_2</spring41.version>
-        <spring42.version>4.2.5.RELEASE_1</spring42.version>
+        <spring41.version>4.1.9.RELEASE_1</spring41.version>
+        <spring42.version>4.2.9.RELEASE_1</spring42.version>
+        <spring43.version>4.3.5.RELEASE_1</spring43.version>
         <spring.security31.version>3.1.4.RELEASE</spring.security31.version>
 
         <sshd.version>0.14.0</sshd.version>
@@ -1038,16 +1036,6 @@
                 <version>${felix.connect.version}</version>
             </dependency>
 
-            <dependency>
-                <groupId>net.java.dev.jna</groupId>
-                <artifactId>jna</artifactId>
-                <version>${jna.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>net.java.dev.jna</groupId>
-                <artifactId>jna-platform</artifactId>
-                <version>${jna.version}</version>
-            </dependency>
 
             <dependency>
                 <groupId>org.ow2.asm</groupId>
@@ -1191,11 +1179,6 @@
                 <groupId>log4j</groupId>
                 <artifactId>log4j</artifactId>
                 <version>${log4j.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.fusesource.jansi</groupId>
-                <artifactId>jansi</artifactId>
-                <version>${jansi.version}</version>
             </dependency>
             <dependency>
                 <groupId>jline</groupId>
@@ -1347,6 +1330,10 @@
                     <exclusion>
                         <groupId>commons-httpclient</groupId>
                         <artifactId>commons-httpclient</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.ops4j.pax.url</groupId>
+                        <artifactId>pax-url-aether-support</artifactId>
                     </exclusion>
                 </exclusions>
             </dependency>
@@ -2147,6 +2134,7 @@
             <properties>
               <maven.test.skip>true</maven.test.skip>
               <invoker.skip>true</invoker.skip>
+              <archetype.test.skip>true</archetype.test.skip>
             </properties>
         </profile>
         <profile>

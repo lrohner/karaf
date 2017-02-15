@@ -443,10 +443,18 @@ public class Deployer {
             for (Map.Entry<String, Map<String, BundleInfo>> bis : resolver.getBundleInfos().entrySet()) {
                 bundleInfo = bis.getValue().get(getUri(resource));
             }
-            if (bundleInfo != null && bundleInfo.isStart()) {
-                states.put(resource, FeatureState.Started);
+            Bundle bundle = deployment.resToBnd.get(resource);
+            if (bundle == null) {
+                // bundle is not present, it's provided by feature
+                // we are using bundleInfo and start flag
+                if (bundleInfo != null && bundleInfo.isStart()) {
+                    states.put(resource, FeatureState.Started);
+                } else {
+                    states.put(resource, FeatureState.Resolved);
+                }
             } else {
-                states.put(resource, FeatureState.Resolved);
+                // if the bundle is already there, just ignore changing state by feature
+                states.remove(resource);
             }
         }
         // Only keep bundles resources
@@ -1180,7 +1188,7 @@ public class Deployer {
                                     // corresponding jar url and use that one to compute the checksum of the bundle.
                                     oldCrc = 0l;
                                     try {
-                                        URL url = bundle.getResource("META-INF/MANIFEST.MF");
+                                        URL url = bundle.getEntry("META-INF/MANIFEST.MF");
                                         URLConnection con = url.openConnection();
                                         Method method = con.getClass().getDeclaredMethod("getLocalURL");
                                         method.setAccessible(true);
@@ -1350,7 +1358,7 @@ public class Deployer {
         if (!bundlesToDestroy.isEmpty()) {
             Collections.sort(bundlesToDestroy, new Comparator<Bundle>() {
                 public int compare(Bundle b1, Bundle b2) {
-                    return (int) (b2.getLastModified() - b1.getLastModified());
+                    return Long.compare(b2.getLastModified(), b1.getLastModified());
                 }
             });
             LOGGER.debug("Selected bundles {} for destroy (no services in use)", bundlesToDestroy);

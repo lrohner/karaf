@@ -80,6 +80,7 @@ import org.apache.karaf.profile.impl.Profiles;
 import org.apache.karaf.tools.utils.KarafPropertiesEditor;
 import org.apache.karaf.tools.utils.model.KarafPropertyEdit;
 import org.apache.karaf.tools.utils.model.KarafPropertyEdits;
+import org.apache.karaf.profile.versioning.VersionUtils;
 import org.apache.karaf.util.config.PropertiesLoader;
 import org.apache.karaf.util.maven.Parser;
 import org.ops4j.pax.url.mvn.MavenResolver;
@@ -753,6 +754,10 @@ public class Builder {
                     installArtifact(downloader, bundle.getLocation().trim());
                 }
             }
+            // Install config files
+            for (ConfigFile configFile : feature.getConfigfile()) {
+                installArtifact(downloader, configFile.getLocation().trim());
+            }
             for (Conditional cond : feature.getConditional()) {
                 for (Bundle bundle : cond.getBundle()) {
                     if (!ignoreDependencyFlag || !bundle.isDependency()) {
@@ -1099,6 +1104,42 @@ public class Builder {
         }
     }
 
+    private String getFeatureSt(Dependency dep) {
+        String version = dep.getVersion() == null || "0.0.0".equals(dep.getVersion()) ? "" : "/" + dep.getVersion();
+        return dep.getName() + version;
+    }
+
+    /**
+     * Checks if a given feature f matches the featureRef.
+     * TODO Need to also check for version ranges. Currently ranges are ignored and all features matching the name
+     * are copied in that case.
+     *  
+     * @param f
+     * @param featureRef
+     * @return
+     */
+    private boolean matches(Feature f, Dependency featureRef) {
+        if (!f.getName().equals(featureRef.getName())) {
+            return false;
+        }
+
+        final String featureRefVersion = featureRef.getVersion();
+
+        if (featureRefVersion == null) {
+            return true;
+        }
+
+        if (featureRefVersion.equals("0.0.0")) {
+            return true;
+        }
+
+        if (featureRefVersion.startsWith("[")) {
+            return true;
+        }
+
+        return VersionUtils.versionEquals(f.getVersion(), featureRefVersion);
+    }
+
     private List<String> getStaged(Stage stage, Map<String, Stage> data) {
         List<String> staged = new ArrayList<>();
         for (String s : data.keySet()) {
@@ -1268,9 +1309,8 @@ public class Builder {
 
     Map<String, String> getHeaders(StreamProvider provider) throws IOException {
         try (
-                InputStream is = provider.open()
+                ZipInputStream zis = new ZipInputStream(provider.open())
         ) {
-            ZipInputStream zis = new ZipInputStream(is);
             ZipEntry entry;
             while ((entry = zis.getNextEntry()) != null) {
                 if (MANIFEST_NAME.equals(entry.getName())) {

@@ -43,9 +43,11 @@ import org.slf4j.LoggerFactory;
 public class LDAPLoginModule extends AbstractKarafLoginModule {
 
     private static Logger logger = LoggerFactory.getLogger(LDAPLoginModule.class);
-
+    
+        
     public void initialize(Subject subject, CallbackHandler callbackHandler, Map<String, ?> sharedState, Map<String, ?> options) {
         super.initialize(subject, callbackHandler, options);
+        LDAPCache.clear();
     }
 
     public boolean login() throws LoginException {
@@ -71,7 +73,7 @@ public class LDAPLoginModule extends AbstractKarafLoginModule {
             throw new LoginException(unsupportedCallbackException.getMessage() + " not available to obtain information from user.");
         }
 
-        user = ((NameCallback) callbacks[0]).getName();
+        user = doRFC2254Encoding(((NameCallback) callbacks[0]).getName());
 
         char[] tmpPassword = ((PasswordCallback) callbacks[1]).getPassword();
 
@@ -136,7 +138,7 @@ public class LDAPLoginModule extends AbstractKarafLoginModule {
             context.close();
         } catch (Exception e) {
             logger.warn("User " + user + " authentication failed.", e);
-            return false;
+            throw new LoginException("Authentication failed: " + e.getMessage());
         } finally {
             if (context != null) {
                 try {
@@ -157,6 +159,34 @@ public class LDAPLoginModule extends AbstractKarafLoginModule {
             throw new LoginException("Can't get user " + user + " roles: " + e.getMessage());
         }
         return true;
+    }
+
+    protected String doRFC2254Encoding(String inputString) {
+        StringBuffer buf = new StringBuffer(inputString.length());
+        for (int i = 0; i < inputString.length(); i++) {
+            char c = inputString.charAt(i);
+            switch (c) {
+                case '\\':
+                    buf.append("\\5c");
+                    break;
+                case '*':
+                    buf.append("\\2a");
+                    break;
+                case '(':
+                    buf.append("\\28");
+                    break;
+                case ')':
+                    buf.append("\\29");
+                    break;
+                case '\0':
+                    buf.append("\\00");
+                    break;
+                default:
+                    buf.append(c);
+                    break;
+            }
+        }
+        return buf.toString();
     }
 
     public boolean abort() throws LoginException {

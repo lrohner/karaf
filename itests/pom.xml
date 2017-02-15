@@ -24,7 +24,7 @@
     <parent>
         <groupId>org.apache.karaf</groupId>
         <artifactId>karaf</artifactId>
-        <version>4.0.8-SNAPSHOT</version>
+        <version>4.0.9-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
@@ -35,6 +35,7 @@
 
     <properties>
         <appendedResourcesDirectory>${basedir}/../etc/appended-resources</appendedResourcesDirectory>
+        <jetty.version>9.3.12.v20160915</jetty.version>
     </properties>
 
     <dependencies>
@@ -117,6 +118,13 @@
             <version>16.0.1</version>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-server</artifactId>
+            <version>${jetty.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -156,6 +164,7 @@
                         <spring40.version>${spring40.version}</spring40.version>
                         <spring41.version>${spring41.version}</spring41.version>
                         <spring42.version>${spring42.version}</spring42.version>
+                        <spring43.version>${spring43.version}</spring43.version>
 					</systemPropertyVariables>
 				</configuration>
 			</plugin>
@@ -184,6 +193,8 @@
                                 <spring32.version>${spring32.version}</spring32.version>
                                 <spring40.version>${spring40.version}</spring40.version>
                                 <spring41.version>${spring41.version}</spring41.version>
+                                <spring42.version>${spring42.version}</spring42.version>
+                                <spring43.version>${spring43.version}</spring43.version>
                     		</systemPropertyVariables>
                         </configuration>
                     </plugin>

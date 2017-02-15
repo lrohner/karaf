@@ -16,19 +16,19 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.apache.karaf.main.internal;
 
-import com.sun.jna.Library;
-import com.sun.jna.Native;
+import org.custommonkey.xmlunit.*;
+import java.io.*;
+import java.lang.*;
 
+Reader r = new FileReader(new File(basedir, "control.xml"));
 
-public interface SystemdDaemon extends Library {
-    SystemdDaemon INSTANCE = (SystemdDaemon) Native.loadLibrary("systemd-daemon", SystemdDaemon.class);
-
-    int sd_notify(int unset_environment, String state);
-    int sd_notifyf(int unset_environment, String format, Object... args);
-
-    // Not available in all systemd version, should replace used of MAINPID
-    // int sd_pid_notify(int pid, int unset_environment, String state);
-    // int sd_pid_notifyff(int pid, int unset_environment, String format, Object... args);
+// load the features file pushed to the repository
+File generated = new File(basedir, "simplify-features/target/feature/feature.xml");
+if (generated.exists()) {
+    try {
+        XMLAssert.assertXMLEqual(r, new FileReader(generated));
+        return true;
+    } catch (Throwable ignored) { }
 }
+return false;

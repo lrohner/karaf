@@ -24,7 +24,7 @@
     <parent>
         <groupId>org.apache.karaf.shell</groupId>
         <artifactId>shell</artifactId>
-        <version>4.0.8-SNAPSHOT</version>
+        <version>4.0.9-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
@@ -101,6 +101,12 @@
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
             <version>${commons-io.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>
